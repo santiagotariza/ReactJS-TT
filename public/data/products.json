@@ -1,0 +1,44 @@
+[
+    {
+        "id": 1,
+        "name": "Oso",
+        "price": 6.99,
+        "image": "/img/oso.avif",
+        "description": "A este osito de peluche le gusta todo, pero sobre todo los frutos del bosque, tanto los azules como los rojos. Un amigo fiel al que le encanta darte abrazos y mimos cuando necesitas un poco de cariño."
+    },
+    {
+        "id": 2,
+        "name": "Pulpo",
+        "price": 5.99,
+        "image": "/img/pulpo.avif",
+        "description": "El pulpo es un animal marino único con 8 tentáculos y la capacidad para camuflarse. Imagina todas las increíbles aventuras que tu hijo puede vivir junto a este compañero."
+    },
+    {
+        "id": 3,
+        "name": "Tiburon",
+        "price": 4.99,
+        "image": "/img/tiburon.avif",
+        "description": "Las crías de tiburones aprenden rápidamente a ser independientes y a cuidar de sí mismas. Tu pequeño tardará un poco más, pero con este peluche se sentirá más seguro para aprender cada día."
+    },
+    {
+        "id": 4,
+        "name": "Suricata",
+        "price": 4.99,
+        "image": "/img/suricata.avif",
+        "description": "Esta suricata tiene muchos detalles adorables, desde la nariz puntiaguda hasta la forma especial de las patas traseras. Pero quizás sean sus ojos curiosos los que la convierten en la favorita de los niños al instante."
+    },
+    {
+        "id": 5,
+        "name": "Panda",
+        "price": 3.99,
+        "image": "/img/panda.avif",
+        "description": "En la naturaleza, un panda adulto come aproximadamente 38 kilos de bambú todos los días. Pero este peluche blanco y negro no necesita comida, solo mucho amor."
+    },
+    {
+        "id": 6,
+        "name": "Jirafa",
+        "price": 6.99,
+        "image": "/img/jirafa.avif",
+        "description": "¿Cuántas manchitas tiene? Seguro que habrá más de una noche que a tu hijo le apetecerá contarlas. Léele algún cuento sobre la hermosa sabana para que se relaje antes de dormir con esta suave jirafa en sus brazos."
+    }
+]
