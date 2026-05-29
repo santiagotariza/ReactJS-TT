@@ -9,8 +9,8 @@ export const Item = ({ name, description, price, image, children }) => {
       {/* <img src={images[0]} /> */}
       <img src={image} alt={`foto de ${name}`} />
       <h3>{name}</h3>
-      <p>{description}</p>
-      <p>${price}</p>
+      <p className="descripcion">{description}</p>
+      <p className="precio">${price}</p>
       {children}
     </article>
   );

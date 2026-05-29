@@ -2,8 +2,8 @@ import "./Footer.css";
 
 export const Footer = () => {
     return (
-        <footer>
-            <p>Copyright &copy; 2026 S.T. Ariza. All rights reserved.</p>
+        <footer className="footer">
+            <p>Copyright &copy; Peluches de IKEA para TT. Todos los derechos reservados.</p>
             <nav>
                 <ul className="nav-list">
                     <li><a href="/about">About Us</a></li>

@@ -8,9 +8,11 @@ import { ItemListContainer } from "./components/ItemListContainer/ItemListContai
 import { ItemDetailContainer } from "./components/ItemDetailContainer/ItemDetailContainer";
 import { CartView } from "./components/Cart/CartView";
 
+import { CartProvider } from "./context/CartContext"; 
+
 function App() {
   return (
-    <>
+    <CartProvider>
       <Header />
       <main>
         <Routes>
@@ -22,7 +24,7 @@ function App() {
         </Routes>
       </main>
       <Footer />
-    </>
+    </CartProvider>
   );
 }
 

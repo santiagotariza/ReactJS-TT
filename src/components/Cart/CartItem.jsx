@@ -6,7 +6,7 @@ export const CartItem = ({ item }) => {
   return (
     <Item {...item}>
       <button
-        className="btn bg-delete primary"
+        className="btn-eliminar-carrito"
         onClick={() => removeItem(item.id)}
       >
         Eliminar

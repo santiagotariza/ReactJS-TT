@@ -25,9 +25,9 @@ export const Count = () => {
         -
       </button>
 
-      <p>Seleccion: {count}</p>
+      <p className="count-number">Seleccion: {count}</p>
 
-      <button className="btn primary" onClick={increment}>
+      <button className="count-btn" onClick={increment}>
         +
       </button>
     </div>

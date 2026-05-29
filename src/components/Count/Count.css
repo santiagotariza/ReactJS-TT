@@ -1,5 +1,36 @@
 .count-container {
-  margin: 2rem;
-  display: flex;
-  gap: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem auto;
+}
+
+/* Botones circulares o cuadrados pequeños para el + y el - */
+.count-btn {
+    background-color: #0057AD;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.count-btn:hover {
+    background-color: #004080;
+}
+
+/* El número de la cantidad en el centro */
+.count-number {
+    font-size: 2.2rem;
+    font-weight: bold;
+    min-width: 3rem;
+    text-align: center;
 }
