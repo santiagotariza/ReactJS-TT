@@ -40,5 +40,12 @@
         "price": 6.99,
         "image": "/img/jirafa.avif",
         "description": "¿Cuántas manchitas tiene? Seguro que habrá más de una noche que a tu hijo le apetecerá contarlas. Léele algún cuento sobre la hermosa sabana para que se relaje antes de dormir con esta suave jirafa en sus brazos."
+    },
+    {
+        "id": 7,
+        "name": "Orangután",
+        "price": 5.99,
+        "image": "/img/mono.avif",
+        "description": "Este peluche se puede llevar colgado de la cadera o la espalda, del mismo modo que los simios trepan y se cuelgan de los árboles de la selva. Cuida y abraza mucho a este orangután, que es una especie en peligro de extinción."
     }
 ]
