@@ -17,43 +17,89 @@ Puedes ver el proyecto desplegado aquí:
 
 El sitio web ha sido optimizado con las siguientes funcionalidades y tecnologías:
 
-* **Renderizado Dinámico desde la Nube:** Los productos ya no se cargan de un JSON local mediante `fetch`; ahora se consultan de forma asíncrona directamente desde una base de datos NoSQL en **Firebase Cloud Firestore**.
-* **Enrutamiento Dinámico (SPA):** Implementación de **React Router Dom** para una navegación fluida sin recargar el navegador, soportando rutas dinámicas para el catálogo completo (`/`), filtrado por categorías (`/category/:category`) y vista de detalles de productos (`/product/:id`).
+* **Renderizado Dinámico desde la Nube:** Los productos ya no se cargan de un JSON local; ahora se consultan de forma asíncrona directamente desde una base de datos NoSQL en **Firebase Cloud Firestore**.
+* **Enrutamiento Dinámico (SPA) y Layouts:** Implementación de **React Router Dom** con vistas estructuradas mediante `PublicLayout` y `AdminLayout`. Soporta rutas dinámicas para el catálogo (`/`), filtrado por categorías (`/category/:category`) y detalles (`/product/:id`).
+* **Panel de Administración y Seguridad:**
+    * Sistema de login seguro con **Firebase Authentication** y manejo de sesión a través de un `AuthContext`.
+    * Protección de acceso mediante el componente `ProtectedRoute`.
+    * **Dashboard de Inventario:** Visualización en tiempo real de los artículos, con capacidad para **eliminar** productos de la base de datos.
+    * **Alta de Productos:** Formulario de carga de nuevos peluches con validación de datos (`validateProduct.js`) y subida dinámica de imágenes utilizando la **API de ImgBB**.
 * **Carrito de Compras con Estado Global:**
-    * Gestión centralizada mediante **Context API** (`CartProvider` y hook personalizado `useCart`) para evitar el *prop drilling*.
-    * Agregar productos con contador incremental adaptable (`Count.jsx`).
-    * Visualización y control total desde la vista del carrito (`CartView.jsx`), permitiendo eliminar ítems individuales o vaciar el carrito completo.
-* **Interfaz y Estilos Unificados:** Estructura CSS modularizada por componente (`Header.css`, `Nav.css`, `Item.css`, `Cart.css`), con un diseño de interfaz pulido (diseño de tarjetas con alturas homogéneas alineadas y botón de carrito flotante con sombreado dinámico).
-* **Seguridad y Variables de Entorno:** Credenciales de Firebase completamente protegidas mediante archivos `.env` (ignorados por Git) y configuradas de manera segura en el entorno de producción de **Netlify**.
+    * Gestión centralizada mediante **Context API** (`CartProvider`) para evitar el *prop drilling*.
+    * Control total desde la vista del carrito, permitiendo agregar, eliminar ítems individuales o vaciar el carrito completo.
+* **Seguridad y Variables de Entorno:** Credenciales de Firebase y API Keys (ImgBB) completamente protegidas mediante archivos `.env` (ignorados por Git) y configuradas de manera segura en el entorno de producción de **Netlify**.
 
 ## 🛠️ Tecnologías Utilizadas
 
-* **ReactJS (v18+):** Arquitectura basada en componentes funcionales y Hooks Hooks (`useState`, `useEffect`, `useContext`).
+* **ReactJS (v18+):** Arquitectura basada en componentes funcionales y Hooks (`useState`, `useEffect`, `useContext`).
 * **Vite:** Entorno de desarrollo y empaquetador de alto rendimiento.
-* **Firebase (Firestore SDK):** Base de datos en la nube para el catálogo de peluches.
-* **React Router Dom:** Manejo de rutas declarativas en el cliente.
-* **CSS3:** Estilos estructurados, Flexbox responsivo, variables y Media Queries.
+* **Firebase (Firestore & Auth SDK):** Base de datos en la nube y sistema de autenticación de usuarios.
+* **ImgBB API:** Servicio externo para el alojamiento y generación de URLs de imágenes de productos.
+* **React Router Dom:** Manejo de rutas declarativas y protección de rutas en el cliente.
+* **CSS3:** Estilos estructurados, Flexbox responsivo, variables y Media Queries, con un diseño unificado tanto para el lado del cliente como para el panel de administración.
 
 ## 📂 Estructura del Proyecto
 
 ```text
 src/
-├── assets/                # Logos vectoriales e imágenes estáticas base
+├── assets/                # Logos e imágenes estáticas base
 ├── components/            # Componentes modulares de la interfaz
-│   ├── Cart/              # Vista del carrito, listas e ítems individuales (CartView, CartItem)
-│   ├── Count/             # Contador de unidades (+ / -) con control de stock
-│   ├── Footer/            # Pie de página institucional de la tienda
+│   ├── Cart/              # Vista y lógica del carrito de compras
+│   ├── Count/             # Contador de unidades (+ / -)
+│   ├── Footer/            # Pie de página institucional
 │   ├── Header/            # Encabezado principal del sitio
-│   ├── Item/              # Tarjeta de producto individual reutilizable
-│   ├── ItemDetail/        # Presentación detallada del peluche seleccionado
-│   ├── ItemDetailContainer/ # Contenedor lógico que solicita el producto a Firebase
-│   ├── ItemList/          # Grilla de renderizado para las tarjetas
-│   ├── ItemListContainer/ # Contenedor lógico del catálogo con filtro por categoría
-│   └── Nav/               # Menú de navegación y botón del carrito interactivo
-├── context/               # Proveedor del estado global del carrito (CartContext.jsx)
-├── firebase/              # Configuración e inicialización segura de Firebase (config.js)
-├── services/              # Consultas y peticiones a la API de Firestore (productsService.js)
-├── App.css                # Estilos del contenedor estructural principal (<main>)
-├── App.jsx                # Componente troncal y definición de rutas de la SPA
-├── index.css              # Estilos globales, resets universales y variables de diseño
-└── main.jsx               # Punto de entrada de la aplicación en el árbol del DOM
+│   ├── Item/              # Tarjeta de producto individual
+│   ├── ItemDetail/        # Presentación detallada del producto
+│   ├── ItemDetailContainer/ # Lógica de petición para un producto específico
+│   ├── ItemList/          # Grilla de renderizado para el catálogo
+│   ├── ItemListContainer/ # Lógica del catálogo y filtros de categoría
+│   ├── Login/             # Pantalla de autenticación para administradores
+│   ├── Nav/               # Menú de navegación y burbuja del carrito
+│   ├── ProtectedRoute/    # Componente envoltorio para protección de rutas privadas
+│   └── adminComponents/   # Componentes exclusivos del panel de control
+│       ├── Dashboard/     # Vista principal de gestión (listado y borrado)
+│       └── ...            # Formularios de alta y pantallas de éxito
+├── context/               # Proveedores de estado global (CartContext, AuthContext)
+├── firebase/              # Inicialización de servicios en la nube (config.js)
+├── layouts/               # Estructuras maestras de vista (AdminLayout, PublicLayout)
+├── services/              # Consultas a Firestore y subida de imágenes a ImgBB
+├── utils/                 # Funciones auxiliares (validateProduct.js)
+├── App.css                # Estilos del contenedor estructural
+├── App.jsx                # Componente troncal y definición de enrutamiento
+├── index.css              # Estilos globales y variables de diseño
+└── main.jsx               # Punto de entrada de la aplicación
+```
+
+## 💻 Instalación y Configuración Local
+
+Para clonar y ejecutar este proyecto en tu entorno local, sigue estos pasos:
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone https://github.com/tu-usuario/nombre-del-repo.git
+   cd nombre-del-repo
+   ```
+
+2. **Instalar las dependencias de Node:**
+   ```bash
+   npm install
+   ```
+
+3. **Configurar las Variables de Entorno:**
+   Crea un archivo llamado `.env` en la raíz del proyecto y añade tus llaves de Firebase y de ImgBB utilizando el prefijo requerido por Vite:
+   ```env
+   VITE_FIREBASE_API_KEY="TU_API_KEY"
+   VITE_FIREBASE_AUTH_DOMAIN="TU_AUTH_DOMAIN"
+   VITE_FIREBASE_PROJECT_ID="TU_PROJECT_ID"
+   VITE_FIREBASE_STORAGE_BUCKET="TU_STORAGE_BUCKET"
+   VITE_FIREBASE_MESSAGING_SENDER_ID="TU_MESSAGING_SENDER_ID"
+   VITE_FIREBASE_APP_ID="TU_APP_ID"
+   
+   VITE_IMGBB_API_KEY="TU_CLAVE_DE_IMGBB"
+   ```
+
+4. **Iniciar el servidor local de desarrollo:**
+   ```bash
+   npm run dev
+   ```
+   Abre [http://localhost:5173](http://localhost:5173) en tu navegador.
