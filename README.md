@@ -58,7 +58,7 @@ src/
 │   ├── ProtectedRoute/    # Componente envoltorio para protección de rutas privadas
 │   └── adminComponents/   # Componentes exclusivos del panel de control
 │       ├── Dashboard/     # Vista principal de gestión (listado y borrado)
-│       └── ...            # Formularios de alta y pantallas de éxito
+│       └── ...            # Formularios de alta y gestion
 ├── context/               # Proveedores de estado global (CartContext, AuthContext)
 ├── firebase/              # Inicialización de servicios en la nube (config.js)
 ├── layouts/               # Estructuras maestras de vista (AdminLayout, PublicLayout)
@@ -76,8 +76,8 @@ Para clonar y ejecutar este proyecto en tu entorno local, sigue estos pasos:
 
 1. **Clonar el repositorio:**
    ```bash
-   git clone https://github.com/tu-usuario/nombre-del-repo.git
-   cd nombre-del-repo
+   git clone https://github.com/santiagotariza/ReactJS-TT.git
+   cd ReactJS-TT
    ```
 
 2. **Instalar las dependencias de Node:**
